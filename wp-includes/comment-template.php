@@ -1975,7 +1975,7 @@ function comment_form_title( $noreplytext = false, $replytext = false, $linktopa
 		// Sets the global so that template tags can be used in the comment form.
 		$comment = get_comment( $replytoid );
 		$author  = ( $linktoparent ) ? '<a href="#comment-' . get_comment_ID() . '">' . get_comment_author( $comment ) . '</a>' : get_comment_author( $comment );
-		printf( $replytext, $author );
+		// printf( $replytext, $author );
 	}
 }
 
@@ -2318,33 +2318,7 @@ function comment_form( $args = array(), $post_id = null ) {
 				esc_attr( $commenter['comment_author'] ),
 				$html_req
 			)
-		),
-		'email'  => sprintf(
-			'<p class="comment-form-email">%s %s</p>',
-			sprintf(
-				'<label for="email">%s%s</label>',
-				__( 'Email' ),
-				( $req ? ' <span class="required">*</span>' : '' )
-			),
-			sprintf(
-				'<input id="email" name="email" %s value="%s" size="30" maxlength="100" aria-describedby="email-notes"%s />',
-				( $html5 ? 'type="email"' : 'type="text"' ),
-				esc_attr( $commenter['comment_author_email'] ),
-				$html_req
-			)
-		),
-		'url'    => sprintf(
-			'<p class="comment-form-url">%s %s</p>',
-			sprintf(
-				'<label for="url">%s</label>',
-				__( 'Website' )
-			),
-			sprintf(
-				'<input id="url" name="url" %s value="%s" size="30" maxlength="200" />',
-				( $html5 ? 'type="url"' : 'type="text"' ),
-				esc_attr( $commenter['comment_author_url'] )
-			)
-		),
+		)
 	);
 
 	if ( has_action( 'set_comment_cookies', 'wp_set_comment_cookies' ) && get_option( 'show_comments_cookies_opt_in' ) ) {
@@ -2388,7 +2362,7 @@ function comment_form( $args = array(), $post_id = null ) {
 		'comment_field'        => sprintf(
 			'<p class="comment-form-comment">%s %s</p>',
 			sprintf(
-				'<label for="comment">%s</label>',
+				'<label class="screen-reader-text" for="comment">%s</label>',
 				_x( 'Comment', 'noun' )
 			),
 			'<textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea>'
@@ -2403,24 +2377,10 @@ function comment_form( $args = array(), $post_id = null ) {
 			)
 		),
 		'logged_in_as'         => sprintf(
-			'<p class="logged-in-as">%s</p>',
-			sprintf(
-				/* translators: 1: Edit user link, 2: Accessibility text, 3: User name, 4: Logout URL. */
-				__( '<a href="%1$s" aria-label="%2$s">Logged in as %3$s</a>. <a href="%4$s">Log out?</a>' ),
-				get_edit_user_link(),
-				/* translators: %s: User name. */
-				esc_attr( sprintf( __( 'Logged in as %s. Edit your profile.' ), $user_identity ) ),
-				$user_identity,
-				/** This filter is documented in wp-includes/link-template.php */
-				wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ), $post_id ) )
-			)
+
 		),
 		'comment_notes_before' => sprintf(
 			'<p class="comment-notes">%s%s</p>',
-			sprintf(
-				'<span id="email-notes">%s</span>',
-				__( 'Your email address will not be published.' )
-			),
 			( $req ? $required_text : '' )
 		),
 		'comment_notes_after'  => '',
@@ -2478,7 +2438,7 @@ function comment_form( $args = array(), $post_id = null ) {
 		<?php
 		echo $args['title_reply_before'];
 
-		comment_form_title( $args['title_reply'], $args['title_reply_to'] );
+		// comment_form_title( $args['title_reply'], $args['title_reply_to'] );
 
 		echo $args['cancel_reply_before'];
 
