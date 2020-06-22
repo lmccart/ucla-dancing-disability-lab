@@ -1,3 +1,10 @@
+.site-main {
+	margin-top: 12em;
+	margin-bottom: 4em;
+	background: white;
+	z-index: -1;
+}
+
 .site {
 	width: 60%;
 	margin: 0 auto;
@@ -5,14 +12,19 @@
 
 .menu {
 	list-style: none;
-	margin: 0;
+	margin: -1em 0 0 0;
 	padding: 0;
+}
+
+.current_page_item a {
+	background: #ff7300;
+	color: white !important;
 }
 
 .item {
 	cursor: pointer;
-	padding: 0.5em;
-	font-size: 2em;
+	padding: 0.5em 0.5em 0.4em 0.5em;
+	font-size: 1.6em;
 	border-bottom: 1px solid black;
 	text-transform: uppercase;
 }
@@ -23,6 +35,7 @@
 
 .item a {
 	color: black;
+	display: block;
 }
 
 .item:hover a {
@@ -46,7 +59,7 @@
 	top: 4vw;
 	left: 4vw;
 	color: black !important;
-	font-size: 3em;
+	font-size: 2.2em;
 	font-weight: normal;
 	padding: 0;
 	margin: 0;
@@ -56,7 +69,7 @@
 	position: fixed;
 	top: 4vw;
 	right: 4vw;
-	font-size: 2em;
+	font-size: 1.6em;
 }
 
 .main-navigation a {
@@ -71,22 +84,101 @@
 	color: white;
 }
 
-.entry-header {
-	margin-top: 12em;
+.post {
+	margin-top: 4em !important;
+}
+
+.category-question {
+	margin-top: 0em !important;
 }
 
 .entry-title {
-	font-size: 2em;
+	font-size: 1.6em;
 	font-weight: normal;
 }
 
 h1, h2, h3 {
 	font-weight: normal;
 	padding: 0;
-	margin: 0;
 	text-transform: uppercase;
 }
 
+h1, h2 {
+	
+	margin-top: 0;
+}
+
+.comment-list li {
+	padding-top: 0.5em;
+}
+.comment-list li.depth-1:first-child {
+	padding-top: 0em !important;
+}
+
+.comment-list , .comment {
+	margin-left: 0 !important; 
+	padding-left: 0 !important;
+	list-style: none;
+}
+
+.comment-author, .author {
+	text-transform: uppercase;
+	display: inline;
+}
+
+.comment-body {
+	display: inline;
+}
+
+.comment-content {
+	margin-left: 0.7em;
+}
+
+.page h2 {
+	margin-top: 4em;
+}
+
+ul.arrows, .post ul, ul.comment-list {
+	margin-left: 0;
+	padding-left: 0;
+	list-style-type: none;
+}
+
+.arrows li:before, .post li:before {
+    content: ">";
+    margin-right: 1em;
+}
+
+.comment-list li {
+	margin-left: 1em !important;
+}
+
+.comment-list li.contracted:before {
+	content: ">";
+	width: 1.2em;
+    margin-left: -1em;
+	display: inline-block;
+}
+
+.comment-list li.expanded:before {
+	content: "v";
+	width: 1.2em;
+    margin-left: -1em;
+	display: inline-block;
+}
+
+.comment-content p {
+	display: inline;
+}
+
+.reply {
+	display: inline;
+}
+
+.children {
+	padding-left: 0;
+	margin-left: 0.7em;
+}
 
 @font-face {
 	font-family: "Shree Devanagari 714";
@@ -96,6 +188,29 @@ h1, h2, h3 {
 		url("Shree-Devanagari-714.woff") format("woff"),
 		url("Shree-Devanagari-714.ttf") format("truetype"),
 		url("Shree-Devanagari-714.svg") format("svg"); 
+}
+
+/* Make YouTube videos inserted via WordPress oEmbed full-width */
+
+.wp-block-embed-youtube {
+	overflow: hidden;
+	position: relative;
+	max-width: 100%;
+	height: auto;
+	padding-bottom: 56.25%;
+}
+
+.wp-block-embed-youtube iframe,
+.wp-block-embed-youtube object,
+.wp-block-embed-youtube embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+nav, .site-title {
+	z-index: -1;
 }
 
 /*!
@@ -167,7 +282,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 html {
-	line-height: 1.15;
 	-webkit-text-size-adjust: 100%;
 }
 
@@ -180,6 +294,7 @@ html {
 body {
 	margin: 0;
 	font-family: "Shree Devanagari 714" !important;
+	font-size: 16pt;
 }
 
 /**
@@ -309,9 +424,8 @@ input,
 optgroup,
 select,
 textarea {
-	font-family: inherit;
+	font-family: "Shree Devanagari 714";
 	font-size: 100%;
-	line-height: 1.15;
 	margin: 0;
 }
 
@@ -498,16 +612,12 @@ html {
 
 /* Typography
 --------------------------------------------- */
-body,
 button,
 input,
 select,
 optgroup,
 textarea {
-	color: #404040;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-	font-size: 1rem;
-	line-height: 1.5;
+	font-size: 1em;
 }
 
 h1,
@@ -635,6 +745,10 @@ table {
 /* Links
 --------------------------------------------- */
 a {
+	color: gray;
+}
+
+a:hover {
 	color: #ff7300;
 }
 
@@ -872,6 +986,10 @@ textarea {
 
 .bypostauthor {
 	display: block;
+}
+
+.comment-content-contracted {
+	display: none;
 }
 
 /* Widgets

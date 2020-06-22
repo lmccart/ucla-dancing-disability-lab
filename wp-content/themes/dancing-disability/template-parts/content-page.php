@@ -13,7 +13,7 @@
 	<header class="entry-header">
 		<?php 
 		$class = is_front_page() ? "entry-title sr-only" : "entry-title";
-		the_title( '<h1 class="'.$class.'"><i>', '</i></h1>' );
+		the_title( '<h1 class="'.$class.'">', '</h1>' );
 		?>
 	</header><!-- .entry-header -->
 

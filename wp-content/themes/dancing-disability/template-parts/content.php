@@ -14,17 +14,22 @@
 		<?php
 		if ( is_singular() ) :
 			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
+		elseif ( is_sticky(get_the_ID()) ):
 			the_title( '<h2 class="entry-title">', '</h2>' );
+		else:
+		?>
+			<h2 class="entry-title"><?php dancing_disability_posted_on(); ?> <?php the_title(); ?></h2>
+		
+		<?php
 		endif;
 
-		if ( 'post' === get_post_type() ) :
+		if ( 'post' === get_post_type() && !is_sticky(get_the_ID())) :
 			?>
 			<div class="entry-meta">
-				<?php
+<!-- 				<?php
 				dancing_disability_posted_by();
 				dancing_disability_posted_on();
-				?>
+				?> -->
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->

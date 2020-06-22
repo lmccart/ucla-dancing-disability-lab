@@ -1345,9 +1345,9 @@ function wp_comment_form_unfiltered_html_nonce() {
 function comments_template( $file = '/comments.php', $separate_comments = false ) {
 	global $wp_query, $withcomments, $post, $wpdb, $id, $comment, $user_login, $user_ID, $user_identity, $overridden_cpage;
 
-	if ( ! ( is_single() || is_page() || $withcomments ) || empty( $post ) ) {
-		return;
-	}
+	// if ( ! ( is_single() || is_page() || $withcomments ) || empty( $post ) ) {
+	// 	return;
+	// }
 
 	if ( empty( $file ) ) {
 		$file = '/comments.php';
@@ -2036,7 +2036,7 @@ function wp_list_comments( $args = array(), $comments = null ) {
 		'end-callback'      => null,
 		'type'              => 'all',
 		'page'              => '',
-		'per_page'          => '',
+		'per_page'          => 1000,
 		'avatar_size'       => 32,
 		'reverse_top_level' => null,
 		'reverse_children'  => '',
@@ -2365,7 +2365,11 @@ function comment_form( $args = array(), $post_id = null ) {
 				'<label class="screen-reader-text" for="comment">%s</label>',
 				_x( 'Comment', 'noun' )
 			),
-			'<textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea>'
+			'<select id="comment-type" name="comment-type">
+				<option value="response">Response</option>
+				<option value="description">Description</option>
+			</select>
+			<textarea id="comment" name="comment" cols="45" rows="3" maxlength="65525" required="required"></textarea>'
 		),
 		'must_log_in'          => sprintf(
 			'<p class="must-log-in">%s</p>',

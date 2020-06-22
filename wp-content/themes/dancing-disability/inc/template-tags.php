@@ -27,13 +27,14 @@ if ( ! function_exists( 'dancing_disability_posted_on' ) ) :
 
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
-			esc_html_x( ', %s', 'post date', 'dancing-disability' ),
+			esc_html_x( '%s', 'post date', 'dancing-disability' ),
 			$time_string
 		);
 
 		echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	}
+
 endif;
 
 if ( ! function_exists( 'dancing_disability_posted_by' ) ) :
@@ -57,24 +58,6 @@ if ( ! function_exists( 'dancing_disability_entry_footer' ) ) :
 	 * Prints HTML with meta information for the categories, tags and comments.
 	 */
 	function dancing_disability_entry_footer() {
-		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-			echo '<span class="comments-link">';
-			comments_popup_link(
-				sprintf(
-					wp_kses(
-						/* translators: %s: post title */
-						__( 'Comment<span class="screen-reader-text"> on %s</span> ', 'dancing-disability' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					wp_kses_post( get_the_title() )
-				)
-			);
-			echo '</span>';
-		}
 
 		edit_post_link(
 			sprintf(
